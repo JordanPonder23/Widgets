@@ -1,5 +1,16 @@
 Filter: 
 
+@ngModule: 
+
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    [...]
+    FormsModule				<----- need to add FormsModule to imports for the ngModel 
+  ],
+  [...]
+
 HTML: 
 
 <input type="text" [(ngModel)]='filterBy' />
