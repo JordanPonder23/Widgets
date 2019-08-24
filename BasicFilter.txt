@@ -1,0 +1,29 @@
+Filter: 
+
+HTML: 
+
+<input type="text" [(ngModel)]='filterBy' />
+
+<tr *ngFor="let variable of this.filteredList">
+		<th scope="row"> {{variable }} </th>
+</tr>
+
+Typescript: 
+
+unfilteredData: any[]
+  filteredList: any[];
+  _filterBy;
+   get filterBy(): string {
+      return this._filterBy;
+   }
+   set filterBy(temp: string) {
+      this._filterBy = temp;
+      this.filteredList = this._filterBy ? this.filtering(this._filterBy) : this.movieData
+   }
+
+
+filtering(filterBy: string) {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.unfilteredData.filter((metalist) =>
+            metalist.title.toLocaleLowerCase().indexOf(filterBy) !== -1)
+    }
