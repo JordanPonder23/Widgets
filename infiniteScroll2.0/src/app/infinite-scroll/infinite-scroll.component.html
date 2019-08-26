@@ -1,0 +1,42 @@
+<div>
+  <select id=selectElement (change)="pageLength()">
+    <option value="all">All</option>
+    <option *ngFor="let page of this.pageIndex()" value={{page}}> {{page}} </option>
+  </select>
+  <br />
+  <input type="text" [(ngModel)]='filterBy' />
+</div>
+<div>
+  <table id=myTable style="width:85%;">
+
+    <thead>
+      <tr>
+        <th (click)="alphabetize()">Pokemon Name</th>
+        <th (click)="baseExperience()">Base Expereince</th>
+        <th>abilities</th>
+      </tr>
+    </thead>
+    <tbody id="scrollable" (scroll)="onScroll()">
+      <tr *ngFor="let poke of this.filteredList; let index =index;">
+        <td> {{poke.pokeName}}</td>
+        <td *ngIf="poke.pokeName != ''">{{poke.baseExp}} </td>
+        <td *ngIf="poke.pokeName == ''" id="loadRow">
+          <span *ngIf="tesEndOfPage(index) ==true"> <button (click)="loadMore(index)">load more </button> </span> </td>
+        <td>
+          <ul>
+            <li *ngFor="let ability of poke.abilities">
+              {{ability.ability.name}}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+  <br />
+  <div id=navArea>
+    <button class="nav" disabled=true id=prevButton (click)="directional('P')"> Prev</button>
+    <button class="nav" *ngFor="let page of this.pageButtons()" (click)="thisPage(page)"> {{page}} </button>
+    <button class="nav" id=nextButton (click)="directional('N')"> Next</button>
+  </div>
+</div>
