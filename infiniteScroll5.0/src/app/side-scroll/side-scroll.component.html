@@ -1,0 +1,14 @@
+
+
+<div class=horBar id=widthIndex> 
+<button class=inlineButtons 
+(mousedown)="mouseDown('L')" (window:mouseup)="mouseUp()"
+id=buttonLeft> <</button>
+
+<div class="item"  id={{reAdjustMargin()}} *ngFor="let item of arrayOfItems"> {{item}} </div> 
+
+<button class=inlineButtons 
+(mousedown)="mouseDown('R')" (window:mouseup)="mouseUp()"
+ id=buttonRight> ></button>
+</div>
+<br/>

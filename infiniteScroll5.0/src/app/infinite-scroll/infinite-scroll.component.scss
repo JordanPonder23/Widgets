@@ -1,0 +1,132 @@
+/* #scrollable{
+    height: 400px; 
+    overflow: auto;
+    overflow-y: scroll;
+
+} */
+tbody {
+    display:block;
+    height:500px;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}
+/*https://stackoverflow.com/questions/23989463/how-to-set-tbody-height-with-overflow-scroll
+*/
+
+.nav{
+    display: inline-block;
+}
+#navArea{
+    display: none; 
+}
+#expandF{
+    background: rgba(245, 245, 245, 0.103);
+    color: black; 
+    display: none; 
+    border: none; 
+}
+#expandF:hover{
+ font-size:  130%; 
+ background: rgba(248, 246, 229, 0.403);
+ border-radius: 40px; 
+}
+#expandB{
+    background: rgba(245, 245, 245, 0.103);
+    color: black; 
+    display: none; 
+    border: none; 
+}
+#expandB:hover{
+ font-size:  130%; 
+ background: rgba(248, 246, 229, 0.403);
+ border-radius: 40px; 
+}
+.lds-circle {
+    display: inline-block;
+    transform: translateZ(1px);
+  }
+  .lds-circle > div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 6px;
+    border-radius: 50%;
+    background: rgb(32, 28, 28);
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  @keyframes lds-circle {
+    0%, 100% {
+      animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(1800deg);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+      transform: rotateY(3600deg);
+    }
+  }
+#topContainer{
+    display: flex;
+    padding-left: 100px; 
+}
+  #filterCSS{
+    
+  }
+  #selectElement {
+    z-index: 1; 
+  }
+  #actualShowing{
+      display: inline-block; 
+  }
+  li {
+    list-style-type: none;
+}
+.nav{
+    background: rgba(255, 255, 255, 0); 
+    color: blue; 
+    border: none; 
+    font-size: 18px; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.nav:hover{
+    
+    font-size: 20.5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navSelected{
+    background: rgba(91, 198, 247, 0.062); 
+    border: none; 
+    border-radius: 20px; 
+    font-size: 18px; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(57, 113, 233, 0.911); 
+    font-size: 110%; 
+}
+.FirLas{
+  background: rgba(91, 198, 247, 0.062); 
+  border: none; 
+  border-radius: 20px; 
+  font-size: 18px; 
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+  color: rgba(57, 113, 233, 0.911); 
+  font-size: 110%; 
+}
+.FirLas:hover {
+  color: rgba(57, 113, 233, 0.999); 
+}
+#first{
+  float: left;
+  margin-left: 150px; 
+}
+#last{
+  float: right;
+  margin-right: 250px;  
+}

@@ -1,0 +1,61 @@
+<div id=topContainer>
+  <!-- <div id=actualShowing> {{this.filteredList.length}}</div> -->
+  <select id=selectElement (change)="pageLength()">
+    <option value="all">All</option>
+    <option *ngFor="let page of this.pageIndex()" value={{page}}> {{page}} </option>
+  </select>
+  <br />
+  <input id=filterCSS type="text" [(ngModel)]='filterBy' />
+</div>
+<div>
+  <table id=myTable style="width:85%;">
+
+    <thead>
+      <tr>
+        <th (click)="alphabetize()">Pokemon Name</th>
+        <th (click)="baseExperience()">Base Expereince</th>
+        <th>abilities</th>
+      </tr>
+    </thead>
+    <tbody id="scrollable" (scroll)="onScroll()">
+      <tr *ngIf="this.filteredList.length == 0">
+        <div class="lds-circle">
+          <div></div> 
+          <div style="display: none;"> {{this.reloadFunction()}}</div>
+        </div>
+        <!-- <span id=loadSpan> {{this.getMore(undefined, this.busy)}} </span> -->
+      </tr>
+      <tr *ngFor="let poke of this.filteredList; let index =index;">
+        <td> {{poke.pokeName}}</td>
+        <td *ngIf="poke.pokeName != ''">{{poke.baseExp}} </td>
+        <td *ngIf="poke.pokeName == ''" id="loadRow">
+          <span *ngIf="tesEndOfPage(index) ==true"> <button (click)="loadMore(index)">load more </button> </span> </td>
+        <td>
+          <ul>
+            <li *ngFor="let ability of poke.abilities">
+              {{ability.ability.name}}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+  <br />
+  <div id=navArea>
+    <button class=FirLas id=first (click)="directional('f')">First</button>
+    <button class="nav" disabled=true id=prevButton (click)="directional('P')"> Prev</button>
+    <!-- <button id=expandB (click)="expandNav('B')">...</button> -->
+    <button class="nav" id={{page}}avail *ngFor="let page of this.pageButtons(); let index = index;"
+      (click)="thisPage(page)">
+      <font *ngIf='this.currentPage!=(index+1)'>{{page}}</font> <strong class=navSelected
+        *ngIf='this.currentPage==(index+1)'> {{page}} </strong>
+        
+    </button>
+    <!--   <span id={{page}}inner> {{page}} </span> {{this.extraButtons(page)}} -->
+    <!-- <button id=expandF (click)="expandNav('F')">...</button> -->
+
+    <button class="nav" id=nextButton (click)="directional('N')">  Next</button>
+    <button class=FirLas id=last (click)="directional('l')" >Last</button>
+  </div>
+</div>
