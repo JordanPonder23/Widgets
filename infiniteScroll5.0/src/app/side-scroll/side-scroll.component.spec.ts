@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SideScrollComponent } from './side-scroll.component';
 
@@ -6,7 +6,7 @@ describe('SideScrollComponent', () => {
   let component: SideScrollComponent;
   let fixture: ComponentFixture<SideScrollComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SideScrollComponent ]
     })
